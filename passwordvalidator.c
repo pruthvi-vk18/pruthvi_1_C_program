@@ -1,13 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
-// Function to check password validity
 int isValidPassword(char password[]) {
     int length = strlen(password);
     int hasUpper = 0, hasLower = 0, hasDigit = 0, hasSpecial = 0;
-
-    // Check each character in the password
     for (int i = 0; i < length; i++) {
         if (isupper(password[i]))
             hasUpper = 1;
@@ -18,20 +14,15 @@ int isValidPassword(char password[]) {
         else if (strchr("!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~", password[i]))
             hasSpecial = 1;
     }
-
-    // Check all criteria
     if (length >= 8 && hasUpper && hasLower && hasDigit && hasSpecial)
-        return 1; // Password is valid
+        return 1;
     else
-        return 0; // Password is invalid
+        return 0;
 }
-
 int main() {
     char password[100];
-
     printf("Enter a password to validate: ");
     scanf("%s", password);
-
     if (isValidPassword(password))
         printf("Password is valid.\n");
     else
@@ -41,6 +32,5 @@ int main() {
                "- Contain at least one lowercase letter\n"
                "- Contain at least one digit\n"
                "- Contain at least one special character (!@#$%^&*)\n");
-
     return 0;
 }
